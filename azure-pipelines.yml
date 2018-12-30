@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'VS2017-Win2016'
+  vmImage: 'ubuntu-16.04'
 
 variables:
   solution: '**/*.sln'
@@ -15,19 +15,10 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@0
+  - script: docker build -t ahmedsramadan/vsts .
+  - script: |
+    docker login -u ahmedsramadan -p Allahakbar@123
+    docker push ahmedsramadan/vsts
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
