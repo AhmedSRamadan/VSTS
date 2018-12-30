@@ -15,6 +15,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  - script: docker build -t ahmedsramadan/vsts .
+  - script: docker build -t ahmedsramadan/vsts -f ./Dockerfile .
   - script: docker login -u ahmedsramadan -p Allahakbar@123
   - script: docker push ahmedsramadan/vsts
