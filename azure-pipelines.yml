@@ -16,9 +16,5 @@ variables:
 
 steps:
   - script: docker build -t ahmedsramadan/vsts .
-  - script: |
-    docker login -u ahmedsramadan -p Allahakbar@123
-    docker push ahmedsramadan/vsts
-
-
-
+  - script: docker login -u ahmedsramadan -p Allahakbar@123
+  - script: docker push ahmedsramadan/vsts
